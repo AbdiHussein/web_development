@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+	<body>
+		<div><h3>Coding Challenge 1<h3></div>
+		<script>
+		var message = "Hello World";
+		window.alert(message);
+		console.log(message);
+		document.write(message);
+		</script>
+		<br>
+		<div><h3>Coding Challenge 2<h3></div>
+		<script>
+		function square(n){
+			document.write(n*n);
+		}
+		</script>
+		<br>
+		<script>
+		function sumthree(a,b,c){
+			document.write(a+b+c);
+		}
+		</script>
+		<br>
+		<script>
+		var person ={
+			name:"Hashim ",
+			age: 22,
+			occupation: " IT Consultant"
+		};
+		person.name ="Jordan "
+		document.write(person.name);
+		document.write(person.age);
+		document.write(person.occupation);
+		</script>
+		<br>
+		<script>
+		function sayHello(){
+			alert("Hello World")
+		}
+		</script>
+		<div><h3>Coding Challenge 3<h3></div>
+		<input type="button" onclick="sayHello()" value="Say Hello"/>
+		<script>
+
+			var person2 ={
+			name:"Hashim ",
+			age: 22,
+			occupation: " IT Consultant"
+		};
+
+		function displayAge(){
+			person2.age+= 1;
+			alert(person2.age);
+		}
+		</script>
+		<input type="button" onclick="displayAge()" value="Increase age"/>
+		<br>
+		<script>
+		var msg = 'He said"My name is elliot"';
+		var msgTwo = msg.toUpperCase();
+		document.write(msgTwo);
+		</script>
+		<br>
+		<script>
+		document.write(2 +(+"1"));
+		</script>
+		<br>
+		<script>
+		var myList =['hello','hey','hi'];
+		document.write(myList);
+		myList[3] = 'hola';
+		document.write(myList);
+		myList.splice(3,1);
+		document.write(myList);
+		</script>
+		<br>
+		<div><h3>Coding Challenge 4<h3></div>
+		<script>
+		function ageCheck(){
+			if(person.age>=20 && person.age<=40){
+				document.write("Yes");
+			}
+			else{
+				document.write("No");
+			}
+		}
+		ageCheck();
+		</script>
+		<div><h3>Coding Challenge 5<h3></div>
+		<br>
+		<script>
+		function FizzBuzz(){
+			for(var i =1; i<=100;i++){
+				if(i%3==0 && i%5==0){
+					document.write(" FizzBuzz");
+				}
+				else if(i%3==0){
+					document.write(" Fizz");	
+				}
+				else if(i%5==0){
+					document.write(" Buzz")
+				}
+				else{
+					document.write(" " + i);
+				}
+			}
+		}
+		FizzBuzz();
+		</script>
+		<div><h3>Coding Challenge 6<h3></div>
+		<br>
+		<script>
+		var largeNum = 1001;
+		var count =0;
+		while(largeNum!=1){
+			if(largeNum%3 ==0){
+				largeNum = largeNum/3;
+				count = count + 1;
+			}
+			else{
+				largeNum = largeNum + 1;
+			}
+		}
+		document.write("The end " + largeNum);
+		document.write("<br>");
+		document.write("Count: " + count);
+		</script>
+		<div><h3>Function 3/ Events 2<h3></div>
+		Name: <input type ="text" id="name">
+		<button onclick="changeName()">Change Name</button>
+		Age: <input type="text" id="age">
+		<button onclick="changeAge()">Change Age</button>
+		Occupation: <input type="text" id="occupation">
+		<button onclick="changeOccupation()">Change Occupation</button>
+		<button onclick="createPerson()">Create Person</button>
+		<button onclick="outputPerson()">Print Person</button>
+		<script>
+		var newPerson={};
+		function createPerson(){
+			newPerson.name = document.getElementById("name").value;
+			newPerson.age = document.getElementById("age").value;
+			newPerson.occupation = document.getElementById("occupation").value;
+		}
+		function changeName(){
+			newPerson.name = document.getElementById("name").value;
+		}
+		function changeAge(){
+			newPerson.age = document.getElementById("age").value;
+		}
+		function changeOccupation(){
+			newPerson.occupation = document.getElementById("occupation").value;
+		}
+		function outputPerson(){
+			alert("Name:"+ newPerson.name);
+			alert("Age:" + newPerson.age);
+			alert("Occupation:" + newPerson.occupation);
+		}
+		</script>
+		<br>
+		<div><h3>String 4<h3></div>
+		<script>
+		function tripleString(str){
+			var total = 0;
+			for(var i=0; i<str.length; i++){
+				if(str.substring(i,i+1) == (str.substring(i+1,i+2)) && (str.substring(i+1,i+2) == (str.substring(i+2,i+3)))){
+						total++;
+					}
+				}document.write(total);
+			}
+		tripleString("abcXXXabc");
+		</script>
+		<div><h3>DOM 1<h3></div>
+		<br>
+		<input type ="text" id="input">
+		<button onclick="createPara()"> Create Paragraph</button>
+		<button onclick="changeText()"> Change Paragraph</buttton>
+		<button onclick="deleteText()"> Delete Paragraph</button>
+		<script>
+		function createPara(){
+			var par = document.createElement("P");
+			document.body.appendChild(par);
+		}
+		function changeText(){
+			document.getElementsByTagName("p")[0] = document.getElementById("input").value;
+
+		}
+		function deleteText(){
+			document.body.removeChild(document.getElementsByTagName("p")[0]);
+		}
+		</script>
+		<div><h3>JSON 1<h3></div>
+		<br>
+		<p id = "exampleJson"></p>
+		<script>
+		var requestURL = 'https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json';
+		var request = new XMLHttpRequest();
+		request.open('GET', requestURL);
+		request.responseType ='json';
+		request.send();
+		request.onload = function() {
+			document.getElementById("exampleJson").innerHTML = JSON.stringify(request.response);
+		}
+		</script>
+	</body>
+</html> 
